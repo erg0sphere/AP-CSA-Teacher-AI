@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 class Main
 {
   public static void main(String[] args)
   {
-    ArrayList<String> keyWords = new ArrayList<String>(); //creates the array list
+    ArrayList<String> keyWords = new ArrayList<String>(); //creates the array list. this does absolutely nothing
 
     keyWords.add("what");
     keyWords.add("who");
@@ -52,6 +51,5 @@ class Main
     
     new GUI(); //creates the gui
   
-    
   }
 }

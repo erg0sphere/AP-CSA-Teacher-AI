@@ -141,7 +141,7 @@ public class Logging
 
   };
 
-  
+  //this is never used
   public int getFeedback()
   {
     Scanner input = new Scanner(System.in);
@@ -149,13 +149,13 @@ public class Logging
     return input.nextInt();
       
   }
+  
   public static void log(int keyword, int response, int rating)
   {
     logKeyword[keyword][1]++;
     logResponse[keyword][response]++;
     logRating[keyword][response] = logRating[keyword][response] + rating;
-
-    
+ 
   }
 
   public static void printlog()
@@ -165,9 +165,7 @@ public class Logging
     {
       for (int j = 0; j < 2; j++)
       {
-        System.out.print(logKeyword[i][j] + ", "); 
-       
-        
+        System.out.print(logKeyword[i][j] + ", ");     
       }
       System.out.print("\n"); 
     }
@@ -178,9 +176,7 @@ public class Logging
     {
       for (int j = 0; j < 4; j++)
       {
-        System.out.print(logResponse[i][j] + ", "); 
-       
-        
+        System.out.print(logResponse[i][j] + ", ");       
       }
       System.out.print("\n"); 
     }
@@ -192,8 +188,6 @@ public class Logging
       for (int j = 0; j < 4; j++)
       {
         System.out.print(logRating[i][j] + ", "); 
-       
-  
       }
       System.out.print("\n"); 
     }

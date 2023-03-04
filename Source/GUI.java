@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
-
 
 public class GUI implements ActionListener
   {
@@ -13,31 +11,29 @@ public class GUI implements ActionListener
     private JFrame frame = new JFrame();
     private JTextField inputBox = new JTextField(20); 
 
-    JButton button = new JButton("Ask"); 
-    JButton button2 = new JButton("Rate"); 
+    JButton askButton = new JButton("Ask"); 
+    JButton rateButton = new JButton("Rate"); 
 
+    //global variables to store what will be logged
     int keywordIndex;
     int responseIndex;
     int rating = 0;
-
-
 
     public GUI() 
     {
 
       // the clickable button
-      
-      button.addActionListener(this);
-      button2.addActionListener(this);
+      askButton.addActionListener(this);
+      rateButton.addActionListener(this);
 
-      // the panel with the button and text
+      //sets the panel with the button and text
       JPanel panel = new JPanel();
       panel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
       panel.setLayout(new GridLayout(0, 1));
       panel.add(prompt);
       panel.add(inputBox);
-      panel.add(button);
-      panel.add(button2);
+      panel.add(askButton);
+      panel.add(rateButton);
       panel.add(ansLabel);
         
       // set up the frame and display it
@@ -46,35 +42,34 @@ public class GUI implements ActionListener
       frame.setTitle("GUI");
       frame.pack();
       frame.setVisible(true);
-      button2.setVisible(false);
+      rateButton.setVisible(false);
 
-    
     }
 
-    // process the button clicks
+    // this method is executed when the button is pressed
     public void actionPerformed(ActionEvent e) 
     {
-      if(e.getSource() == button)
+      if(e.getSource() == askButton) //runs if askButton is pressed
       {
-        String input = inputBox.getText();
+        String input = inputBox.getText(); 
         input = input.toLowerCase();
         
-        process(input);
+        process(input); 
 
         prompt.setText("How would you rate this response?");
         inputBox.setText("");
-        button.setVisible(false);
-        button2.setVisible(true);
+        askButton.setVisible(false);
+        rateButton.setVisible(true);
         
       }
-      else if(e.getSource() == button2)
+      else if(e.getSource() == rateButton) //runs if rateButton is pressed
       {
-        System.out.println("button 2 is pressed");
+        //System.out.println("button 2 is pressed");
         
         String strRating = inputBox.getText();
         rating = Integer.parseInt(strRating);
         
-        System.out.print("\033[H\033[2J");
+        System.out.print("\033[H\033[2J"); //clear console
 
         System.out.println("keyword index = " + keywordIndex);
         System.out.println("response index = " + responseIndex);
@@ -85,14 +80,11 @@ public class GUI implements ActionListener
         
         prompt.setText("Whatz up guys! I am Mr. Daugherty. Does anyone have any questions?");
         inputBox.setText("");
-        button.setVisible(true);
-        button2.setVisible(false);
+        askButton.setVisible(true);
+        rateButton.setVisible(false);
         ansLabel.setText("Answer: ");
         
-      }
-        
-      
-     
+      }     
         
     }
     public void process(String input)
@@ -142,34 +134,34 @@ public class GUI implements ActionListener
       {"what","An object that floats ","Magnetic field in the area","Distribute current in the circuit"},
       };
  
-      //loops though array to search keyword
+      
       int randnum1 = Random.generateNum(0, 41);
       responseIndex = Random.generateNum(1, 3);
       
+      //loops though array to search keyword
       for(int i = 0; i < 41; i++)
       {
         if(input.contains(ai[i][0]))
         {
           //randomly selects a response based on keyword
-          keywordIndex = i;
+          keywordIndex = i; //stores i into the globle variable keywordIndex so it can be passed into Logging.log()
           String ans = ai[keywordIndex][responseIndex];
           ansLabel.setText("Answer: " + ans);
-          System.out.print("1");
+          //System.out.print("1");
           System.out.println(ans);
           
           
           break;
         } 
-        else if(i == 40) //null condition
+        else if(i == 40) //null condition, selects a random response from a random key word
         {
           keywordIndex = 41;
           String ans2 = ai[randnum1][responseIndex];
           
           ansLabel.setText("Answer: " + ans2);
-          System.out.print("2");
+          //System.out.print("2");
           System.out.println(ans2);
           
-        
         }
       }
     }
