@@ -158,7 +158,7 @@ public class Logging
  
   }
 
-  public static void printlog()
+  public static void printLog()
   {
     System.out.println("Keyword log{Keyword index, frequency of keyword}:"); 
     for(int i = 0; i < 42; i++) //print logKeyword
@@ -190,6 +190,30 @@ public class Logging
         System.out.print(logRating[i][j] + ", "); 
       }
       System.out.print("\n"); 
+    }
+
+    
+     
+  }
+
+  public static void printArray()
+  {
+    for(int i = 0; i < 42; i++) //print the 3 array into one array. {keyword, keyword frequency, R1 frequency, R2 frequency, R3 frequency, R1 Rating, R2 Rating, R3 Rating,}
+    {
+      System.out.print("{ ");
+      for (int j = 0; j < 2; j++)
+      {
+        System.out.print(logKeyword[i][j] + ", ");     
+      }
+      for (int j = 1; j < 4; j++)
+      {
+        System.out.print(logResponse[i][j] + ", ");       
+      }
+      for (int j = 1; j < 4; j++)
+      {
+        System.out.print(logRating[i][j] + ", "); 
+      }
+      System.out.print("}\n"); 
     }
   }
 }

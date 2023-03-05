@@ -56,7 +56,7 @@ public class GUI implements ActionListener
         
         process(input); 
 
-        prompt.setText("How would you rate this response?");
+        prompt.setText("How would you rate this response from 1-5?");
         inputBox.setText("");
         askButton.setVisible(false);
         rateButton.setVisible(true);
@@ -76,7 +76,8 @@ public class GUI implements ActionListener
         System.out.println("rating  = " + rating);
         
         Logging.log(keywordIndex, responseIndex, rating);
-        Logging.printlog();
+        //Logging.printLog();
+        Logging.printArray();
         
         prompt.setText("Whatz up guys! I am Mr. Daugherty. Does anyone have any questions?");
         inputBox.setText("");
