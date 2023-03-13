@@ -5,3 +5,5 @@ Created March, 3, 2023
 - Added logging. Logs keywords, responses, rating 
 # v0.9.1
 - Added the ability to print logged data to the console
+# v0.9.2
+- Output rearranged responses based on rating 
